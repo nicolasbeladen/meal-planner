@@ -32,12 +32,12 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 ### Setup
 
-\`\`\`bash
+```bash
 git clone git@github.com:nicolasbeladen/meal-planner.git
 cd meal-planner
 bundle install
 rails db:create db:migrate
-\`\`\`
+```
 
 ### Environment variables
 
@@ -45,8 +45,8 @@ Secrets are loaded from a `.env` file (git-ignored) via `dotenv-rails`.
 
 ### Run
 
-\`\`\`bash
+```bash
 rails server
-\`\`\`
+```
 
 Then open http://localhost:3000.
