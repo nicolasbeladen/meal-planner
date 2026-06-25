@@ -1,0 +1,11 @@
+<h1>Recipes generator</h1>
+<%= simple_form_for :recipe_request, url: recipes_path, method: :post do |f| %>
+  <%= f.input :prompt, as: :text,
+        label: "Describe what you'd like to eat",
+        input_html: { rows: 3, placeholder: "e.g. quick veggie dinner for 2" } %>
+  <%= f.button :submit, "I'm hungry",
+      class: "btn btn-primary",
+      data: { turbo_submits_with: "Cooking… 🍳" } %>
+<% end %>
+
+<div id="recipes_list" class="mt-3"></div>
