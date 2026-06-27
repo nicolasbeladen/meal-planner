@@ -1,0 +1,21 @@
+<div class="row g-4">
+  <% @recipes.each_with_index do |recipe, index| %>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm <%= 'recipe-card--locked' if index.positive? %>">
+        <div class="card-body">
+          <h2 class="h5 card-title"><%= recipe["title"] %></h2>
+          <p class="text-muted small mb-3">
+            <%= recipe["cooking_difficulty"] %>/5 - <%= recipe["cooking_time"] %> min
+          </p>
+
+          <h3 class="h6 fw-bold mb-1">Ingredients</h3>
+          <ul class="small mb-0">
+            <% recipe["ingredients"].each do |ingredient| %>
+              <li><%= ingredient["quantity"] %> <%= ingredient["unit"] %> — <%= ingredient["name"] %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
