@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="hero" style="background-image: url('<%= asset_path("hero.jpg") %>');">
+  <div class="hero-overlay">
+    <div class="container text-center text-white">
+      <h1 class="hero-title">Eat well, effortlessly.</h1>
+      <p class="hero-subtitle">
+        Healthy, varied recipes for your whole week generated in seconds.
+      </p>
+      <%= link_to "Get my recipes", new_recipe_path, class: "btn btn-success btn-lg" %>
+    </div>
+  </div>
+</section>

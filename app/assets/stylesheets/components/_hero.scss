@@ -1,0 +1,23 @@
+.hero {
+    height: calc(100vh - 56px);
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin: 1rem 0 2rem;
+}
