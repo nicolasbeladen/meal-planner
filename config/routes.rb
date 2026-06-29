@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "menus/index"
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create]
