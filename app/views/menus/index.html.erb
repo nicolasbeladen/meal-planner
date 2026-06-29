@@ -1,2 +1,13 @@
-<h1>Menus#index</h1>
-<p>Find me in app/views/menus/index.html.erb</p>
+<div class="menus-page">
+  <div class="menus-header">
+    <h1>My Menus</h1>
+    <p>Welcome back, <strong><%= current_user.email %></strong> 👋</p>
+  </div>
+
+  <div class="menus-empty-state">
+    <h3>You don't have any menus yet.</h3>
+    <p>Create your first personalized meal plan.</p>
+
+    <%= link_to "Create a menu", new_recipe_path, class: "btn btn-dark" %>
+  </div>
+</div>
