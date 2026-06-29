@@ -1,5 +1,5 @@
 <div class="row g-4">
-  <% @generated_recipes.each_with_index do |recipe, index| %>
+  <% recipes.each_with_index do |recipe, index| %>
     <div class="col-md-4">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? %>">
         <div class="recipe-default-img">
@@ -14,8 +14,8 @@
             </span>
             <span class="recipe-difficulty">
               Difficulty
-              <% 5.times do |index| %>
-                <% if index < recipe["cooking_difficulty"].to_i %>
+              <% 5.times do |star_index| %>
+                <% if star_index < recipe["cooking_difficulty"].to_i %>
                   <i class="fa-solid fa-star recipe-star"></i>
                 <% else %>
                   <i class="fa-regular fa-star recipe-star recipe-star--empty"></i>
