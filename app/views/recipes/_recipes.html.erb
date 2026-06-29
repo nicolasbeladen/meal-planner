@@ -1,5 +1,5 @@
 <div class="row g-4">
-  <% @recipes.each_with_index do |recipe, index| %>
+  <% @generated_recipes.each_with_index do |recipe, index| %>
     <div class="col-md-4">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? %>">
         <div class="recipe-default-img">
