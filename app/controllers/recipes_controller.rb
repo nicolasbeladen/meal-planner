@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipes = generate_recipes(params[:recipe_request][:prompt])
+    @generated_recipes = generate_recipes(params[:recipe_request][:prompt])
   end
 
   private
