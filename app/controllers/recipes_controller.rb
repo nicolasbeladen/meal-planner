@@ -5,6 +5,9 @@ class RecipesController < ApplicationController
 
   def create
     @generated_recipes = generate_recipes(params[:recipe_request][:prompt])
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private
