@@ -1,0 +1,15 @@
+<section class="recipe-generator">
+  <%= simple_form_for :recipe_request, url: recipes_path, method: :post do |f| %>
+    <div class="prompt-card">
+      <%= f.input :prompt, as: :text, label: false,
+            input_html: { rows: 3, placeholder: "make me a quick veggie dinner for 2…" } %>
+      <%= f.button :submit, "I'm hungry", class: "btn btn-dark btn-lg",
+            data: { turbo_submits_with: "Cooking… 🍳" } %>
+    </div>
+  <% end %>
+  <div id="recipes_list" class="mt-5">
+    <% if local_assigns[:placeholder].present? %>
+      <p class="recipes-empty"><%= placeholder %></p>
+    <% end %>
+  </div>
+</section>

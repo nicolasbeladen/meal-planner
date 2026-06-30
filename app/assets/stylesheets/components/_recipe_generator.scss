@@ -1,23 +1,4 @@
 .recipe-generator {
-    background: linear-gradient(160deg, $primary 0%, #02463a 100%);
-    margin: -1.5rem 0 0;
-    padding: 4rem 1.5rem 6rem;
-    text-align: center;
-    color: $white;
-
-    h1 {
-        font-weight: 700;
-        margin-bottom: 1rem;
-    }
-
-    .subtitle {
-        font-size: 1.125rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
     .prompt-card {
         max-width: 720px;
         margin: 0 auto;

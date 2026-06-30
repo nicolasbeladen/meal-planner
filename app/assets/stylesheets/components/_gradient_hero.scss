@@ -1,0 +1,8 @@
+.gradient-hero {
+    flex: 1;
+    background: linear-gradient(160deg, $primary 0%, #02463a 100%);
+    margin: -1.5rem 0 0;
+    padding: 4rem 1.5rem 6rem;
+    text-align: center;
+    color: $white;
+}

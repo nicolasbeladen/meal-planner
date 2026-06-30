@@ -1,0 +1,7 @@
+<%# app/views/shared/_page_header.html.erb %>
+<header class="page-header">
+  <h1><%= title %></h1>
+  <% if local_assigns[:subtitle].present? %>
+    <p class="subtitle"><%= subtitle %></p>
+  <% end %>
+</header>
