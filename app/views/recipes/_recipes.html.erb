@@ -1,21 +1,24 @@
 <div class="row g-4">
   <% recipes.each_with_index do |recipe, index| %>
+    <% title = recipe.is_a?(Hash) ? recipe["title"] : recipe.title %>
+    <% cooking_time = recipe.is_a?(Hash) ? recipe["cooking_time"] : recipe.cooking_time %>
+    <% cooking_difficulty = recipe.is_a?(Hash) ? recipe["cooking_difficulty"] : recipe.cooking_difficulty %>
     <div class="col-md-4">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? && locked %>">
         <div class="recipe-default-img">
           <i class="fa-solid fa-utensils"></i>
         </div>
         <div class="card-body">
-          <h2 class="h5 card-title"><%= recipe["title"] %></h2>
+          <h2 class="h5 card-title"><%= title %></h2>
           <div class="recipe-meta">
             <span class="recipe-time">
               <i class="fa-regular fa-clock"></i>
-              <%= recipe["cooking_time"] %> minutes
+              <%= cooking_time %> minutes
             </span>
             <span class="recipe-difficulty">
               Difficulty
               <% 5.times do |star_index| %>
-                <% if star_index < recipe["cooking_difficulty"].to_i %>
+                <% if star_index < cooking_difficulty.to_i %>
                   <i class="fa-solid fa-star recipe-star"></i>
                 <% else %>
                   <i class="fa-regular fa-star recipe-star recipe-star--empty"></i>
