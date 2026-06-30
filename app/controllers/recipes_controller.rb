@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
           cooking_time: recipe["cooking_time"]
         )
       end
+      @generated_recipes = menu.recipes
     end
 
     respond_to do |format|
