@@ -1,0 +1,102 @@
+.login-page {
+  min-height: 80vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  background: #fffaf6;
+  padding: 48px 40px;
+  border: 1px solid #e8ddd3;
+  text-align: center;
+}
+
+.login-card h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: #2f2a25;
+}
+
+.login-card .form-inputs {
+  text-align: left;
+}
+
+.login-card label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4a4038;
+  margin-bottom: 8px;
+}
+
+.login-card input:not([type="checkbox"]) {
+  width: 100%;
+  border: 1px solid #d8cbc0;
+  background: white;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: #2f2a25;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #2f2a25;
+}
+
+.login-card .form-actions input,
+.login-card .btn {
+  width: 100%;
+  background: #2f2a25;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.login-card .form-actions input:hover,
+.login-card .btn:hover {
+  background: #4a4038;
+}
+
+.login-links {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.login-links a {
+  color: #2f2a25;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 24px;
+}
+
+.login-card .remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #2f2a25;
+}
+
+.login-card .remember-me label {
+  margin: 0;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #2f2a25;
+}
