@@ -1,13 +1,5 @@
-<div class="menus-page">
-  <div class="menus-header">
-    <h1>My Menus</h1>
-    <p>Welcome back, <strong><%= current_user.email %></strong> 👋</p>
-  </div>
-
-  <div class="menus-empty-state">
-    <h3>You don't have any menus yet.</h3>
-    <p>Create your first personalized meal plan.</p>
-
-    <%= link_to "Create a menu", new_recipe_path, class: "btn btn-dark" %>
-  </div>
+<div class="gradient-hero">
+  <%= render "shared/page_header", title: "My menus",
+        subtitle: "Create your first personalized meal plan." %>
+  <%= render "shared/recipe_generator", placeholder: "You don't have any menus yet." %>
 </div>

@@ -1,3 +1,3 @@
 <%= turbo_stream.update "recipes_list" do %>
-  <%= render "recipes", recipes: @generated_recipes %>
+  <%= render "recipes", recipes: @generated_recipes, locked: !user_signed_in? %>
 <% end %>
