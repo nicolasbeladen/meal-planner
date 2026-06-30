@@ -24,6 +24,7 @@ class RecipesController < ApplicationController
     )
       end
       end
+      @generated_recipes = menu.recipes
     end
 
     respond_to do |format|

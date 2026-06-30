@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create] do
-    resources :ingredients, only:[:create]
 
   end
   resources :menus, only: [:index]
