@@ -4,7 +4,20 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @generated_recipes = generate_recipes(params[:recipe_request][:prompt])
+    prompt = params[:recipe_request][:prompt]
+    @generated_recipes = generate_recipes(prompt)
+
+    if user_signed_in?
+      menu = current_user.menus.create!(prompt: prompt)
+      @generated_recipes.each do |recipe|
+        menu.recipes.create!(
+          title: recipe["title"],
+          cooking_difficulty: recipe["cooking_difficulty"],
+          cooking_time: recipe["cooking_time"]
+        )
+      end
+    end
+
     respond_to do |format|
       format.turbo_stream
     end
