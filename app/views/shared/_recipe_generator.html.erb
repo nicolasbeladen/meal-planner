@@ -8,7 +8,9 @@
     </div>
   <% end %>
   <div id="recipes_list" class="mt-5">
-    <% if local_assigns[:placeholder].present? %>
+    <% if local_assigns[:recipes].present? && recipes.any? %>
+      <%= render "recipes/recipes", recipes: recipes, locked: false %>
+    <% elsif local_assigns[:placeholder].present? %>
       <p class="recipes-empty"><%= placeholder %></p>
     <% end %>
   </div>
