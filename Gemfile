@@ -18,7 +18,7 @@ gem "jbuilder"
 # Ruby framework for every major AI provider [https://github.com/crmne/ruby_llm]
 gem "ruby_llm", "~> 1.16"
 # Flexible authentication solution for Rails with Warden [https://github.com/heartcombo/devise]
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
