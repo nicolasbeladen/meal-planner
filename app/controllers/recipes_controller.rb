@@ -16,13 +16,13 @@ class RecipesController < ApplicationController
           cooking_difficulty: recipe["cooking_difficulty"],
           cooking_time: recipe["cooking_time"]
         )
-      Array(recipe["ingredients"]).each do |ingredient|
-    saved_recipe.ingredients.create!(
-      name: ingredient["name"],
-      quantity: ingredient["quantity"],
-      unit: ingredient["unit"]
-    )
-      end
+        Array(recipe["ingredients"]).each do |ingredient|
+          saved_recipe.ingredients.create!(
+            name: ingredient["name"],
+            quantity: ingredient["quantity"],
+            unit: ingredient["unit"]
+          )
+        end
       end
       @generated_recipes = menu.recipes
     end
@@ -30,6 +30,10 @@ class RecipesController < ApplicationController
     respond_to do |format|
       format.turbo_stream
     end
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
   end
 
   private

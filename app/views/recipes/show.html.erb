@@ -1,0 +1,26 @@
+<div class="container my-4">
+  <%= link_to "← Retour", menus_path, class: "btn btn-outline-secondary mb-4" %>
+
+  <h1><%= @recipe.title %></h1>
+
+  <div class="recipe-meta mb-4">
+    <span><i class="fa-regular fa-clock"></i> <%= @recipe.cooking_time %> minutes</span>
+    <span class="ms-3">
+      Difficulty
+      <% 5.times do |i| %>
+        <% if i < @recipe.cooking_difficulty.to_i %>
+          <i class="fa-solid fa-star recipe-star"></i>
+        <% else %>
+          <i class="fa-regular fa-star recipe-star recipe-star--empty"></i>
+        <% end %>
+      <% end %>
+    </span>
+  </div>
+
+  <h2>Ingrédients</h2>
+  <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.quantity %> <%= ingredient.unit %> <%= ingredient.name %></li>
+    <% end %>
+  </ul>
+</div>
