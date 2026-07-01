@@ -9,12 +9,20 @@ class RecipesController < ApplicationController
 
     if user_signed_in?
       menu = current_user.menus.create!(prompt: prompt)
+
       @generated_recipes.each do |recipe|
-        menu.recipes.create!(
+        saved_recipe = menu.recipes.create!(
           title: recipe["title"],
           cooking_difficulty: recipe["cooking_difficulty"],
           cooking_time: recipe["cooking_time"]
         )
+      Array(recipe["ingredients"]).each do |ingredient|
+    saved_recipe.ingredients.create!(
+      name: ingredient["name"],
+      quantity: ingredient["quantity"],
+      unit: ingredient["unit"]
+    )
+      end
       end
       @generated_recipes = menu.recipes
     end
