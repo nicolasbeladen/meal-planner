@@ -58,3 +58,19 @@
     pointer-events: none;
     user-select: none;
 }
+
+.recipe-actions {
+  position: relative;
+  z-index: 2;
+  margin-top: 16px;
+}
+
+.recipe-favorite-btn {
+  width: 100%;
+}
+.recipe-favorited-text {
+  margin: 0;
+  font-size: 14px;
+  color: #2f2a25;
+  font-weight: 500;
+}
