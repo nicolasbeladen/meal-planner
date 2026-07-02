@@ -43,3 +43,13 @@
     pointer-events: none;
     user-select: none;
 }
+
+.recipe-actions {
+  position: relative;
+  z-index: 2;
+  margin-top: 16px;
+}
+
+.recipe-favorite-btn {
+  width: 100%;
+}

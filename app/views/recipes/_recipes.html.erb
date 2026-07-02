@@ -6,7 +6,7 @@
     <div class="col-md-4">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? && locked %>">
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
-          <%= link_to "", recipe_path(recipe), class: "stretched-link" %> 
+          <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
         <% end %>
         <div class="recipe-default-img">
           <i class="fa-solid fa-utensils"></i>
@@ -29,6 +29,14 @@
               <% end %>
             </span>
           </div>
+        <% if user_signed_in? && recipe.is_a?(Recipe) %>
+            <div class="recipe-actions">
+              <%= button_to "Add to favorites",
+                  recipe_favorites_path(recipe),
+                  method: :post,
+                  class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
