@@ -29,15 +29,16 @@
               <% end %>
             </span>
           </div>
-  <% if user_signed_in? && recipe.is_a?(Recipe) %>
+ <% if user_signed_in? && recipe.is_a?(Recipe) %>
   <div class="recipe-actions">
     <% if current_user.favorites.exists?(recipe: recipe) %>
       <p class="recipe-favorited-text">✓ Already in favorites</p>
     <% else %>
-    <%= button_to "Add to favorites",
-        recipe_favorites_path(recipe),
-        method: :post,
-        class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
+      <%= button_to "Add to favorites",
+          recipe_favorites_path(recipe),
+          method: :post,
+          class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
+    <% end %>
   </div>
 <% end %>
         </div>
