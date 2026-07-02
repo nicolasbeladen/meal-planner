@@ -1,12 +1,12 @@
-<div class="row g-4">
+<div class="recipe-card-row">
   <% recipes.each_with_index do |recipe, index| %>
     <% title = recipe.is_a?(Hash) ? recipe["title"] : recipe.title %>
     <% cooking_time = recipe.is_a?(Hash) ? recipe["cooking_time"] : recipe.cooking_time %>
     <% cooking_difficulty = recipe.is_a?(Hash) ? recipe["cooking_difficulty"] : recipe.cooking_difficulty %>
-    <div class="col-md-4">
+    <div class="recipe-card-col">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? && locked %>">
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
-          <%= link_to "", recipe_path(recipe), class: "stretched-link" %> 
+          <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
         <% end %>
         <div class="recipe-default-img">
           <i class="fa-solid fa-utensils"></i>
