@@ -14,7 +14,8 @@ class RecipesController < ApplicationController
         saved_recipe = menu.recipes.create!(
           title: recipe["title"],
           cooking_difficulty: recipe["cooking_difficulty"],
-          cooking_time: recipe["cooking_time"]
+          cooking_time: recipe["cooking_time"],
+          steps: recipe["steps"].to_json
         )
         Array(recipe["ingredients"]).each do |ingredient|
           saved_recipe.ingredients.create!(
