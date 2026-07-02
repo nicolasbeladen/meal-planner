@@ -1,10 +1,25 @@
+.recipe-card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recipe-card-col {
+    flex: 0 1 380px;
+}
+
+.recipes-list-title {
+    font-family: $headers-font;
+    margin-bottom: 1.5rem;
+}
+
 .recipe-card {
     border: none;
     border-radius: $border-radius-xxl;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    max-width: 380px;
-    margin: 0 auto;
+    max-width: 340px;
+    margin: 0;
 
     .recipe-default-img {
         height: 160px;
