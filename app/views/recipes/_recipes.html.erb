@@ -30,6 +30,8 @@
               <% end %>
             </span>
           </div>
+    <% unless local_assigns[:favorites_page] %>
+
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
             <div class="recipe-actions">
             <% if favorited %>
@@ -42,6 +44,7 @@
           <% end %>
             </div>
           <% end %>
+         <% end %>
         </div>
       </div>
     </div>
