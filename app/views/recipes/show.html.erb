@@ -17,10 +17,16 @@
     </span>
   </div>
 
-  <h2>Ingrédients</h2>
+  <h2 class="mt-4">Ingredients</h2>
   <ul>
     <% @recipe.ingredients.each do |ingredient| %>
       <li><%= ingredient.quantity %> <%= ingredient.unit %> <%= ingredient.name %></li>
     <% end %>
   </ul>
+  <h2 class="mt-4">Cooking steps</h2>
+  <ol>
+    <% JSON.parse(@recipe.steps || "[]").each do |step| %>
+      <li><%= step %></li>
+    <% end %>
+  </ol>
 </div>
