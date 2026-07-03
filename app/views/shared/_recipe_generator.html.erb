@@ -10,7 +10,8 @@
   <div id="recipes_list" class="mt-5">
     <% if local_assigns[:recipes].present? && recipes.any? %>
     <% if user_signed_in? %>
-      <h3 class="recipes-list-title">Dernières recettes</h3>
+      <h3 class="recipes-list-title">Latest recipes</h3>
+      <%= render "menus/ingredients_summary", ingredients: local_assigns[:ingredients] || [] %>
     <% end %>
       <%= render "recipes/recipes", recipes: recipes, locked: false %>
     <% elsif local_assigns[:placeholder].present? %>
