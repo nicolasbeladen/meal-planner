@@ -9,6 +9,12 @@
          role="button" aria-expanded="false" aria-controls="ingredients-list">
         View <i class="fa-solid fa-chevron-down"></i>
       </a>
+      <%= link_to "https://wa.me/?text=#{ERB::Util.url_encode(@whatsapp_message)}",
+            class: "btn btn-success btn-sm",
+            target: "_blank",
+            rel: "noopener noreferrer" do %>
+        <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+        <% end %>
     </div>
     <div class="collapse" id="ingredients-list">
       <div class="card-body border-top pt-3">
@@ -24,7 +30,7 @@
             </li>
           <% end %>
         </ul>
-      </div>
     </div>
+      </div>
   </div>
 <% end %>
