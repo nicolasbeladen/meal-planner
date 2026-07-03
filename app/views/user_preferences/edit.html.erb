@@ -1,0 +1,10 @@
+<div class="container my-4">
+  <h1>My preferences</h1>
+
+  <%= simple_form_for @user_preference, url: user_user_preference_path(current_user), method: :patch do |f| %>
+    <%= f.input :cooking_skill, label: "Cooking skills", collection: ["Low", "Medium", "High"] %>
+    <%= f.input :household_size, label: "Household size" %>
+    <%= f.input :max_cooking_time, label: "Max cooking time (minutes)" %>
+    <%= f.button :submit, "Save", class: "btn btn-dark" %>
+  <% end %>
+</div>

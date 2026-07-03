@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  get "user_preferences/edit"
+  get "user_preferences/update"
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create, :show] do
-  resources :favorites, only: [:create]
+    resources :favorites, only: [:create]
   end
   resources :menus, only: [:index]
   resources :favorites, only: [:index]
+  resources :users do
+    resource :user_preference, only: [:edit, :update]
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
