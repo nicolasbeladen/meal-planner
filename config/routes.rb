@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create, :show] do
-  resources :favorites, only: [:create]
-
+    resources :favorites, only: [:create]
   end
   resources :menus, only: [:index]
+  resources :favorites, only: [:index]
   resources :users do
     resource :user_preference, only: [:edit, :update]
   end
