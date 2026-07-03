@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create, :show] do
-  resources :favorites, only: [:create]
+  resources :favorites, only: [:create, :destroy]
   end
   resources :menus, only: [:index]
   resources :favorites, only: [:index]
