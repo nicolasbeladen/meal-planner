@@ -1,10 +1,10 @@
-<div class="row g-4">
+<div class="recipe-card-row">
   <% recipes.each_with_index do |recipe, index| %>
     <% title = recipe.is_a?(Hash) ? recipe["title"] : recipe.title %>
 <% cooking_time = recipe.is_a?(Hash) ? recipe["cooking_time"] : recipe.cooking_time %>
 <% cooking_difficulty = recipe.is_a?(Hash) ? recipe["cooking_difficulty"] : recipe.cooking_difficulty %>
 <% favorited = user_signed_in? && recipe.is_a?(Recipe) && current_user.favorites.exists?(recipe_id: recipe.id) %>
-    <div class="col-md-4">
+    <div class="recipe-card-col">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? && locked %>">
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
           <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
@@ -30,6 +30,7 @@
               <% end %>
             </span>
           </div>
+
     <% unless local_assigns[:favorites_page] %>
 
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
