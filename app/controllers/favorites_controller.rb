@@ -5,4 +5,8 @@ class FavoritesController < ApplicationController
 
     redirect_to menus_path, notice: "Added to favorites."
   end
+
+  def index
+    @recipes = current_user.favorites.includes(recipe: :ingredients).map(&:recipe)
+  end
 end

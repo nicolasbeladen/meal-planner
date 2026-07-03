@@ -1,0 +1,13 @@
+<div class="gradient-hero">
+  <%= render "shared/page_header",
+        title: "My favorite recipes",
+        subtitle: "Find all your saved recipes in one place." %>
+
+  <div class="mt-5">
+    <% if @recipes.any? %>
+      <%= render "recipes/recipes", recipes: @recipes, locked: false %>
+    <% else %>
+      <p class="recipes-empty">You don't have any favorite recipes yet.</p>
+    <% end %>
+  </div>
+</div>
