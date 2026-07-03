@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get "user_preferences/edit"
+  get "user_preferences/update"
   devise_for :users
   root to: "pages#home"
   resources :recipes, only: [:new, :create, :show]
   resources :menus, only: [:index]
+  resources :users do
+    resource :user_preference, only: [:edit, :update]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
