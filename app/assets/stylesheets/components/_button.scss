@@ -1,0 +1,48 @@
+.btn {
+    border-radius: $border-radius-xxl;
+}
+
+.recipe-generator .btn {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+// Ingredients summary — "View" toggle
+.card.ingredients-summary .btn-link {
+    width: auto;
+    margin-top: 0;
+    white-space: nowrap;
+    color: $primary;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+// Ingredients summary — WhatsApp share (overrides the 100% above)
+.card.ingredients-summary .btn-success {
+    width: auto;
+}
+
+// Recipe card — favorite button
+.recipe-favorite-btn {
+    width: 100%;
+}
+
+// Login submit
+.login-card .form-actions input,
+.login-card .btn {
+    width: 100%;
+    background: #2f2a25;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.login-card .form-actions input:hover,
+.login-card .btn:hover {
+    background: #4a4038;
+}
