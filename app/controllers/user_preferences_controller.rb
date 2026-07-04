@@ -8,7 +8,7 @@ class UserPreferencesController < ApplicationController
     if @user_preference.update(user_preference_params)
       redirect_to menus_path, notice: "Preferences updated!"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

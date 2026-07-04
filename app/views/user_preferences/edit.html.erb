@@ -1,6 +1,14 @@
 <div class="container my-4">
   <h1>My preferences</h1>
 
+  <% if @user_preference.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user_preference.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= simple_form_for @user_preference, url: user_user_preference_path(current_user), method: :patch do |f| %>
     <%= f.input :cooking_skill, label: "Cooking skills", collection: ["Low", "Medium", "High"] %>
     <%= f.input :household_size, label: "Household size" %>
