@@ -13,6 +13,23 @@
     <%= f.input :cooking_skill, label: "Cooking skills", collection: ["Low", "Medium", "High"] %>
     <%= f.input :household_size, label: "Household size" %>
     <%= f.input :max_cooking_time, label: "Max cooking time (minutes)" %>
+    <%= f.input :allergies,
+            label: "Allergies",
+            collection: [
+              "Gluten",
+              "Lactose",
+              "Eggs",
+              "Peanuts",
+              "Tree nuts",
+              "Soy",
+              "Fish",
+              "Shellfish",
+              "Sesame",
+              "Mustard",
+              "Celery",
+              "Sulphites"
+            ],
+            as: :check_boxes %>
     <%= f.button :submit, "Save", class: "btn btn-dark" %>
   <% end %>
 </div>

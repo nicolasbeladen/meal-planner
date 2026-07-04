@@ -15,6 +15,6 @@ class UserPreferencesController < ApplicationController
   private
 
   def user_preference_params
-    params.require(:user_preference).permit(:cooking_skill, :household_size, :max_cooking_time)
+    params.require(:user_preference).permit(:cooking_skill, :household_size, :max_cooking_time, allergies: [])
   end
 end
