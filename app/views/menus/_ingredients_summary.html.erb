@@ -20,14 +20,7 @@
       <div class="card-body border-top pt-3">
         <ul class="ingredients-list list-unstyled mb-0">
           <% ingredients.each do |ingredient| %>
-            <li>
-              <%= ingredient[:name].capitalize %>
-              <% if ingredient[:unit].present? %>
-                x <%= number_with_precision(ingredient[:quantity], precision: 1, strip_insignificant_zeros: true) %> <%= ingredient[:unit] %>
-              <% else %>
-                x <%= ingredient[:quantity].to_i %>
-              <% end %>
-            </li>
+            <li><%= ingredient[:name].capitalize %> x <%= ingredient_quantity(ingredient) %></li>
           <% end %>
         </ul>
     </div>

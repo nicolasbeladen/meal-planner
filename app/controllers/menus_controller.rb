@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  include IngredientsHelper
+
   def index
     @menu = current_user.menus.last
     if @menu
@@ -15,12 +17,7 @@ class MenusController < ApplicationController
 
   def build_whatsapp_message(ingredients)
     lines = ingredients.map do |ingredient|
-      quantity = if ingredient[:unit].present?
-                   "#{ingredient[:quantity].round(1)} #{ingredient[:unit]}"
-                 else
-                   ingredient[:quantity].to_i.to_s
-                 end
-      "- #{ingredient[:name].capitalize} x #{quantity}"
+      "- #{ingredient[:name].capitalize} x #{ingredient_quantity(ingredient)}"
     end
 
     <<~MSG.strip
