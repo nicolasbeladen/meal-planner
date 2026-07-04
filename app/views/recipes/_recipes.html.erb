@@ -31,21 +31,31 @@
             </span>
           </div>
 
-    <% unless local_assigns[:favorites_page] %>
+<% if local_assigns[:favorites_page] %>
+<% favorite = local_assigns[:favorites].find { |fav| fav.recipe_id == recipe.id } %>
 
-        <% if user_signed_in? && recipe.is_a?(Recipe) %>
-            <div class="recipe-actions">
-            <% if favorited %>
-           <p class="recipe-favorited-text">Added to your favorites</p>
-           <% else %>
-              <%= button_to "Add to favorites",
-                  recipe_favorites_path(recipe),
-                  method: :post,
-                  class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
-          <% end %>
-            </div>
-          <% end %>
-         <% end %>
+  <div class="recipe-actions">
+    <%= button_to "Remove from favorites",
+      recipe_favorite_path(recipe, favorite),
+        method: :delete,
+        class: "btn btn-outline-danger btn-sm recipe-favorite-btn" %>
+  </div>
+
+<% else %>
+
+  <div class="recipe-actions">
+    <% if favorited %>
+      <p class="recipe-favorited-text">Added to your favorites</p>
+    <% else %>
+      <%= button_to "Add to favorites",
+          recipe_favorites_path(recipe),
+          method: :post,
+          class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
+    <% end %>
+  </div>
+
+<% end %>
+
         </div>
       </div>
     </div>

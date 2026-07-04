@@ -7,8 +7,17 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @menu = current_user.menus.includes(recipes: :ingredients).last
-    @recipes = @menu ? @menu.recipes : []
-    @favorites_count = current_user.favorites.count
+    @favorites = current_user.favorites.includes(recipe: :ingredients)
+    @recipes = @favorites.map(&:recipe)
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:recipe_id])
+    favorite = current_user.favorites.find_by!(recipe: recipe)
+    favorite.destroy
+
+    redirect_back fallback_location: favorites_path,
+                  notice: "Removed from favorites.",
+                  status: :see_other
   end
 end
