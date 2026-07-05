@@ -8,4 +8,15 @@ module IngredientsHelper
     )
     [quantity, ingredient[:unit]].compact_blank.join(" ")
   end
+
+  def whatsapp_message(ingredients)
+    lines = ingredients.map do |ingredient|
+      "- #{ingredient[:name].capitalize} x #{ingredient_quantity(ingredient)}"
+    end
+
+    <<~MSG.strip
+      *Shopping list from Meal Planner:*
+      #{lines.join("\n")}
+    MSG
+  end
 end

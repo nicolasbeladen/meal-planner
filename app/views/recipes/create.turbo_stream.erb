@@ -1,6 +1,7 @@
 <%= turbo_stream.update "recipes_list" do %>
-<% if user_signed_in? %>
+  <% if user_signed_in? %>
     <h3 class="recipes-list-title">Latest recipes</h3>
+    <%= render "menus/ingredients_summary", ingredients: @ingredients %>
   <% end %>
   <%= render "recipes", recipes: @generated_recipes, locked: !user_signed_in? %>
 <% end %>
