@@ -26,6 +26,7 @@ class RecipesController < ApplicationController
         end
       end
       @generated_recipes = menu.recipes
+      @ingredients = menu.aggregated_ingredients
     end
 
     respond_to do |format|
