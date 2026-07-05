@@ -9,7 +9,7 @@
          role="button" aria-expanded="false" aria-controls="ingredients-list">
         View <i class="fa-solid fa-chevron-down"></i>
       </a>
-      <%= link_to "https://wa.me/?text=#{ERB::Util.url_encode(@whatsapp_message)}",
+      <%= link_to "https://wa.me/?text=#{ERB::Util.url_encode(whatsapp_message(ingredients))}",
             class: "btn btn-success btn-sm",
             target: "_blank",
             rel: "noopener noreferrer" do %>
