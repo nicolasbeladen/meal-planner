@@ -42,7 +42,7 @@
   </div>
 
 <% else %>
-
+<% if user_signed_in? && recipe.is_a?(Recipe) %>
   <div class="recipe-actions">
     <% if favorited %>
       <p class="recipe-favorited-text">Added to your favorites</p>
@@ -51,7 +51,9 @@
           recipe_favorites_path(recipe),
           method: :post,
           class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
-    <% end %>
+      <% end %>
+        <% end %>
+
   </div>
 
 <% end %>
