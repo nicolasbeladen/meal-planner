@@ -5,7 +5,6 @@ class RecipesController < ApplicationController
 
   def create
     prompt = params[:recipe_request][:prompt]
-    prompt = enriched_prompt(prompt)
     @generated_recipes = generate_recipes(prompt)
 
     if user_signed_in?
@@ -49,19 +48,6 @@ class RecipesController < ApplicationController
       "ingredients": [ { "name": "string", "quantity": 200, "unit": "g" } ],
       "steps": ["string"] } ] }
   PROMPT
-  def enriched_prompt(prompt)
-    return prompt unless user_signed_in?
-
-    preferences = current_user.user_preference
-    return prompt unless preferences&.allergies&.any?
-
-    <<~PROMPT
-      #{prompt}
-
-      The user has the following food allergies: #{preferences.allergies.join(', ')}.
-      Never suggest recipes containing these allergens or ingredients derived from them.
-    PROMPT
-  end
 
   def generate_recipes(prompt)
     system_prompt = SYSTEM_PROMPT.dup
@@ -72,6 +58,10 @@ class RecipesController < ApplicationController
       system_prompt += "\n- Cooking skill: #{pref.cooking_skill}" if pref.cooking_skill.present?
       system_prompt += "\n- Household size: #{pref.household_size} people" if pref.household_size.present?
       system_prompt += "\n- Max cooking time: #{pref.max_cooking_time} minutes" if pref.max_cooking_time.present?
+      if pref.allergies.any?
+      system_prompt += "\n- Food allergies: #{pref.allergies.join(', ')}"
+      system_prompt += "\nNever suggest recipes containing these allergens or ingredients derived from them."
+end
     end
 
     response = RubyLLM.chat
