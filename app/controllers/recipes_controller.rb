@@ -55,17 +55,27 @@ class RecipesController < ApplicationController
     preferences = current_user.user_preference
     return prompt unless preferences&.allergies&.any?
 
-  <<~PROMPT
-    #{prompt}
+    <<~PROMPT
+      #{prompt}
 
-    The user has the following food allergies: #{preferences.allergies.join(", ")}.
-    Never suggest recipes containing these allergens or ingredients derived from them.
-  PROMPT
+      The user has the following food allergies: #{preferences.allergies.join(', ')}.
+      Never suggest recipes containing these allergens or ingredients derived from them.
+    PROMPT
   end
-  
+
   def generate_recipes(prompt)
+    system_prompt = SYSTEM_PROMPT.dup
+
+    if user_signed_in? && current_user.user_preference
+      pref = current_user.user_preference
+      system_prompt += "\nUser preferences:"
+      system_prompt += "\n- Cooking skill: #{pref.cooking_skill}" if pref.cooking_skill.present?
+      system_prompt += "\n- Household size: #{pref.household_size} people" if pref.household_size.present?
+      system_prompt += "\n- Max cooking time: #{pref.max_cooking_time} minutes" if pref.max_cooking_time.present?
+    end
+
     response = RubyLLM.chat
-                      .with_instructions(SYSTEM_PROMPT)
+                      .with_instructions(system_prompt)
                       .with_params(response_format: { type: "json_object" })
                       .ask(prompt)
     JSON.parse(response.content)["recipes"]
