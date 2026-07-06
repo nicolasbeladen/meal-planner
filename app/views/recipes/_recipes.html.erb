@@ -1,28 +1,33 @@
 <div class="recipe-card-row">
   <% recipes.each_with_index do |recipe, index| %>
     <% title = recipe.is_a?(Hash) ? recipe["title"] : recipe.title %>
-<% cooking_time = recipe.is_a?(Hash) ? recipe["cooking_time"] : recipe.cooking_time %>
-<% cooking_difficulty = recipe.is_a?(Hash) ? recipe["cooking_difficulty"] : recipe.cooking_difficulty %>
-<% favorited = user_signed_in? && recipe.is_a?(Recipe) && current_user.favorites.exists?(recipe_id: recipe.id) %>
+    <% cooking_time = recipe.is_a?(Hash) ? recipe["cooking_time"] : recipe.cooking_time %>
+    <% cooking_difficulty = recipe.is_a?(Hash) ? recipe["cooking_difficulty"] : recipe.cooking_difficulty %>
+    <% favorited = user_signed_in? && recipe.is_a?(Recipe) && current_user.favorites.exists?(recipe_id: recipe.id) %>
+
     <div class="recipe-card-col">
       <div class="card recipe-card h-100 <%= 'recipe-card--locked' if index.positive? && locked %>">
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
           <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
         <% end %>
+
         <% if recipe.is_a?(Recipe) && recipe.image_url.present? %>
-        <%= image_tag recipe.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
-          <% else %>
-        <div class="recipe-default-img">
-          <i class="fa-solid fa-utensils"></i>
-        </div>
+          <%= image_tag recipe.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+        <% else %>
+          <div class="recipe-default-img">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
         <% end %>
+
         <div class="card-body">
           <h2 class="h5 card-title"><%= title %></h2>
+
           <div class="recipe-meta">
             <span class="recipe-time">
               <i class="fa-regular fa-clock"></i>
               <%= cooking_time %> minutes
             </span>
+
             <span class="recipe-difficulty">
               Difficulty
               <% 5.times do |star_index| %>
@@ -35,29 +40,29 @@
             </span>
           </div>
 
-<% if local_assigns[:favorites_page] %>
-<% favorite = local_assigns[:favorites].find { |fav| fav.recipe_id == recipe.id } %>
+          <% if local_assigns[:favorites_page] && user_signed_in? && recipe.is_a?(Recipe) %>
+            <% favorite = local_assigns[:favorites].find { |fav| fav.recipe_id == recipe.id } %>
 
-  <div class="recipe-actions">
-    <%= button_to "Remove from favorites",
-      recipe_favorite_path(recipe, favorite),
-        method: :delete,
-        class: "btn btn-outline-danger btn-sm recipe-favorite-btn" %>
-  </div>
-<% if user_signed_in? && recipe.is_a?(Recipe) %>
-  <div class="recipe-actions">
-    <% if favorited %>
-      <p class="recipe-favorited-text">Added to your favorites</p>
-    <% else %>
-      <%= button_to "Add to favorites",
-          recipe_favorites_path(recipe),
-          method: :post,
-          class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
-      <% end %>
-        <% end %>
-  </div>
-<% end %>
+            <div class="recipe-actions">
+              <%= button_to "Remove from favorites",
+                  recipe_favorite_path(recipe, favorite),
+                  method: :delete,
+                  class: "btn btn-outline-danger btn-sm recipe-favorite-btn" %>
+            </div>
 
+          <% elsif user_signed_in? && recipe.is_a?(Recipe) %>
+
+            <div class="recipe-actions">
+              <% if favorited %>
+                <p class="recipe-favorited-text">Added to your favorites</p>
+              <% else %>
+                <%= button_to "Add to favorites",
+                    recipe_favorites_path(recipe),
+                    method: :post,
+                    class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
