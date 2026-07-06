@@ -9,9 +9,13 @@
         <% if user_signed_in? && recipe.is_a?(Recipe) %>
           <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
         <% end %>
+        <% if recipe.is_a?(Recipe) && recipe.image_url.present? %>
+        <%= image_tag recipe.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+          <% else %>
         <div class="recipe-default-img">
           <i class="fa-solid fa-utensils"></i>
         </div>
+        <% end %>
         <div class="card-body">
           <h2 class="h5 card-title"><%= title %></h2>
           <div class="recipe-meta">

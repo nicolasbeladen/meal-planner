@@ -15,7 +15,8 @@ class RecipesController < ApplicationController
           title: recipe["title"],
           cooking_difficulty: recipe["cooking_difficulty"],
           cooking_time: recipe["cooking_time"],
-          steps: recipe["steps"].to_json
+          steps: recipe["steps"].to_json,
+          image_url: UnsplashService.search_photo(recipe["title"])
         )
         Array(recipe["ingredients"]).each do |ingredient|
           saved_recipe.ingredients.create!(
@@ -60,9 +61,9 @@ class RecipesController < ApplicationController
       system_prompt += "\n- Household size: #{pref.household_size} people" if pref.household_size.present?
       system_prompt += "\n- Max cooking time: #{pref.max_cooking_time} minutes" if pref.max_cooking_time.present?
       if pref.allergies.any?
-      system_prompt += "\n- Food allergies: #{pref.allergies.join(', ')}"
-      system_prompt += "\nNever suggest recipes containing these allergens or ingredients derived from them."
-end
+        system_prompt += "\n- Food allergies: #{pref.allergies.join(', ')}"
+        system_prompt += "\nNever suggest recipes containing these allergens or ingredients derived from them."
+      end
     end
 
     response = RubyLLM.chat
