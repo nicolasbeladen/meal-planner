@@ -23,12 +23,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="min-height: 100vh; display: flex; flex-direction: column;">
+  <body>
     <%= render "shared/navbar" %>
     <%= render "shared/notice" %>
-    <main style="flex: 1;">
-      <%= yield %>
-    </main>
-    <%= render "shared/footer" %>
+    <%= yield %>
   </body>
 </html>
