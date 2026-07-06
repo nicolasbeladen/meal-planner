@@ -40,8 +40,6 @@
         method: :delete,
         class: "btn btn-outline-danger btn-sm recipe-favorite-btn" %>
   </div>
-
-<% else %>
 <% if user_signed_in? && recipe.is_a?(Recipe) %>
   <div class="recipe-actions">
     <% if favorited %>
@@ -53,9 +51,7 @@
           class: "btn btn-outline-dark btn-sm recipe-favorite-btn" %>
       <% end %>
         <% end %>
-
   </div>
-
 <% end %>
 
         </div>
