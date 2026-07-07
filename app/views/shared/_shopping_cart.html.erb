@@ -1,0 +1,28 @@
+<div id="shopping_cart" class="shopping-cart">
+  <% if ingredients.any? %>
+    <div class="dropdown">
+      <a href="#" role="button" class="shopping-cart-toggle"
+         data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="shopping-cart-badge badge rounded-pill bg-success"><%= ingredients.size %></span>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-end shopping-cart-menu p-4">
+        <h6 class="mb-3">🛒 <strong>Shopping list</strong></h6>
+        <p class="shopping-cart-items">
+          <%= ingredients.map { |ingredient| "#{ingredient[:name].capitalize} x #{ingredient_quantity(ingredient)}" }.join(" - ") %>
+        </p>
+        <%= link_to "https://wa.me/?text=#{ERB::Util.url_encode(whatsapp_message(ingredients))}",
+              class: "btn btn-success w-100",
+              target: "_blank",
+              rel: "noopener noreferrer" do %>
+          <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <span class="shopping-cart-toggle disabled">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </span>
+  <% end %>
+</div>

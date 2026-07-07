@@ -3,9 +3,10 @@
     <%= link_to (user_signed_in? ? menus_path : root_path), class: "navbar-brand" do %>
       🥗 Meal Planner
     <% end %>
-    <div class="navbar-nav ms-auto">
+    <div class="navbar-nav ms-auto d-flex align-items-center gap-3">
       <% if user_signed_in? %>
-      <%= link_to favorites_path, class: "nav-link me-3" do %>
+        <%= render "shared/shopping_cart", ingredients: @shopping_list %>
+        <%= link_to favorites_path, class: "nav-link" do %>
       <i class="fa-solid fa-heart"></i>
       Favorites
     <% end %>

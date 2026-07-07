@@ -1,0 +1,35 @@
+.shopping-cart {
+    .shopping-cart-toggle {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+
+        &.disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+    }
+
+    .shopping-cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        font-size: 11px;
+    }
+
+    .shopping-cart-menu {
+        width: 400px;
+        border-radius: $border-radius-xxl;
+    }
+
+    .shopping-cart-items {
+        line-height: 1.8;
+    }
+}

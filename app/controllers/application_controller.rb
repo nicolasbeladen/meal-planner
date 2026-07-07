@@ -4,7 +4,15 @@ class ApplicationController < ActionController::Base
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
   before_action :authenticate_user!
+  before_action :set_shopping_list
+
   def after_sign_in_path_for(resource)
     menus_path
+  end
+
+  private
+
+  def set_shopping_list
+    @shopping_list = user_signed_in? ? (current_user.menus.last&.aggregated_ingredients || []) : []
   end
 end
