@@ -16,7 +16,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # Ruby framework for every major AI provider [https://github.com/crmne/ruby_llm]
-gem "ruby_llm", "~> 1.16"
+gem "ruby_llm", "~> 2.0"
 # Flexible authentication solution for Rails with Warden [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.9"
 
